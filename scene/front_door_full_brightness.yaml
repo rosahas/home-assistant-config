@@ -1,0 +1,4 @@
+  - name: front_door_full_brightness
+    entities:
+      light.frontdoor_lights:
+        state: on

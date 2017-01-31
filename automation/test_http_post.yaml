@@ -1,0 +1,7 @@
+  alias: 'Testing with HTTP POST'
+  hide_entity: False
+  trigger:
+    - platform: event
+      event_type: http_post_test
+  action:
+    - service: script.http_post_test_script

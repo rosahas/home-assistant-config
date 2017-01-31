@@ -1,0 +1,14 @@
+  http_post_test_script:
+    sequence:
+    - service: logbook.log
+      data:
+        name: http_post_test_script running
+        message: http_post_test_script has been initiated
+
+    - service: light.turn_off
+      entity_id: light.living_room_light
+    - service: script.garage_openned_outside_lights
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      entity_id: light.living_room_light

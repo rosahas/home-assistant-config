@@ -1,0 +1,19 @@
+# Garage door light on script
+  garage_opened:
+    sequence:
+    - service: logbook.log
+      data:
+        name: "Garage Door opened"
+        message: "Someone has openned the garage door."
+
+    - service: switch.turn_on
+      entity_id: switch.garage_light
+
+    - service: script.garage_opened_outside_lights
+
+# Simple delay for 5 mins
+    - delay: '00:05:00'
+# more involved delay with a range of 5 - 20 mins at random.
+#    - delay: '00:{{ (range(5, 20)|random|int) }}:00'
+    - service: switch.turn_off
+      entity_id: switch.garage_light

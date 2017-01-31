@@ -1,0 +1,6 @@
+# garage door lights night
+  - name: garage_door_night_light
+    entities:
+      light.garagedoor_lights:
+        state: on
+        brightness: 22

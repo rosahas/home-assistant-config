@@ -1,0 +1,7 @@
+  alias: 'Log SkyBell Motion detection'
+  hide_entity: False
+  trigger:
+    - platform: event
+      event_type: skybell_motion
+  action:
+    - service: script.front_house_motion

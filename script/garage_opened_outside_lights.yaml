@@ -1,0 +1,44 @@
+  garage_opened_outside_lights:
+    sequence:
+    - service: logbook.log
+      data:
+        name: "Garage Door opened, check if it's night"
+        message: "Garage Door opened, check if it's night and set outside lights on"
+#        message: "Garage door is {{ states.cover.sahas_garage_door.state }} since {{ states.cover.sahas_garage_door.attributes['time in state'].split('m')[0] }} minutes."
+# Only set the outside lights to full if it's past sunset.
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+
+    - service: light.turn_on
+      entity_id: light.garagedoor_lights
+    # - service: script.ifttt_notify
+    #   data_template:
+    #     value1: "TestHomeAssistant_Trigger"
+    #     value2: "Garage door is {{ states.cover.sahas_garage_door.state }}"
+    #     value3: "Since {{ states.cover.sahas_garage_door.attributes['time in state'].split('m')[0] }} minutes"
+#    - service: script.garage_openned_outsideLights
+    - delay:
+        minutes: 5
+    - service: scene.turn_on
+      entity_id: scene.garage_door_night_light
+#    - service: switch.turn_on
+#      entity_id: switch.garage_light
+
+
+
+
+#    - condition: state
+#      entity_id: sun.sun
+#      state: 'below.horizon'
+#    - service: light.turn_on
+#      entity_id: light.garagedoor_lights
+# You can use this to make more involved scenes
+#    - service: scene.turn_on
+#      entity_id: scene.front_full_brightness
+# Simple delay
+#    - delay: '00:00:2'
+# more involved delay with a range of 5 - 20 mins at random.
+#    - delay: '00:{{ (range(5, 20)|random|int) }}:00'
+#    - service: light.turn_off
+#      entity_id: light.garagedoor_lights

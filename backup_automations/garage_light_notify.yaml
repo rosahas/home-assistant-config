@@ -1,0 +1,7 @@
+  alias:  Notify Garage Lights changed
+  trigger:
+    platform: state
+    entity_id: switch.garage_light
+  action:
+    service: ifttt.trigger
+    data_template: {"event":"GarageLightChange", "value1":"Garage Lights", "value2": "{{ trigger.to_state.state }}"}

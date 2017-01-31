@@ -1,0 +1,5 @@
+  - name: front_door_night_light
+    entities:
+      light.frontdoor_lights:
+        state: on
+        brightness: 25

@@ -1,0 +1,12 @@
+# Tested and it actually worked on Jan 26, 2017, at 15:57:00 :)
+  alias: 'Turn on light when sun sets'
+  initial_state: True
+  hide_entity: False
+  trigger:
+    platform: time
+    # When 'after' is used, you cannot also match on hour, minute, seconds.
+    # Military time format.
+    after: '15:57:00'
+  action:
+    service: light.turn_on
+    entity_id: light.office_lights

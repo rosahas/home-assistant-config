@@ -1,0 +1,9 @@
+# Garage Door state changed..  get the Garage Light on for 2 min.
+  alias: 'Garage Door State Change detection'
+  hide_entity: False
+  trigger:
+    platform: state
+    entity_id: sensor.garage_door_status
+    state: 'open'
+  action:
+    service: script.garage_opened

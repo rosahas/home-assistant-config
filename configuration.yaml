@@ -1,0 +1,114 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: RosPi
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret homeassistant_latitude
+  longitude: !secret homeassistant_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 238
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+
+  customize: !include_dir_merge_named customize
+
+# Show links to resources in log and frontend
+introduction:
+
+# logging
+logger:
+  default:  debug
+#  logs:
+#    homeassistant.components.cover.garadget: debug
+#    homeassistant.components: debug
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_api_password
+  server_port:  !secret http_server_port
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+  ssl_certificate:  !secret http_ssl_certificate
+  ssl_key:  !secret http_ssl_key
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+  exclude:
+    entities:
+      - sensor.garage_door_time_in_state
+      - sensor.garage_door_wifi_signal_strength
+
+# Track the sun
+sun:
+
+sensor: !include_dir_list sensor/
+
+ifttt:
+  key: !secret ifttt_key
+
+automation: !include_dir_list automation/
+
+# Garage door light on script
+script: !include_dir_merge_named script/
+
+# My scenes
+scene: !include_dir_list scene/
+
+# Example configuration.yaml entry
+cover:
+  platform: garadget
+  covers:
+    !secret garadget_door_id:
+      access_token: !secret garadget_access_token
+      name:  Sahas Garage Door
+
+group:
+  garage_door:
+    name: Garage door
+    entities:
+      - cover.garage_door
+      - sensor.garage_door_status
+      - sensor.garage_door_time_in_state
+      - sensor.garage_door_wifi_signal_strength
+      - sensor.garage_door_laser_rate_state
+
+
+# Text to speech
+tts:
+  platform: google
+
+switch:
+  - platform: tplink
+    host: 192.168.1.61
+    name: Garage Light
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant-1
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+wink:
+  email: !secret wink_email
+  password: !secret wink_password
+  client_id: !secret wink_client_id
+  client_secret: !secret wink_client_secret
