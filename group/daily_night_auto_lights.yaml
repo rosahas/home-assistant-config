@@ -1,0 +1,6 @@
+  daily_night_auto_lights:
+    name: Daily Night Automatic lights
+    entities:
+      - light.garagedoor_lights
+      - light.frontdoor_lights
+      - light.stairways_light

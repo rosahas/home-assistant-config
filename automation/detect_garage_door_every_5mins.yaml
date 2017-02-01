@@ -1,0 +1,43 @@
+#Automation to check if the garage is open more than 2 mins.
+  alias: detect_garage_door_every_5mins
+  trigger:
+    - platform: time
+      minutes: '/5'
+      seconds: 00
+  condition:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: sensor.garage_door_status
+        state: 'open'
+      - condition: template
+        value_template: >-
+          {%- set morethan2min = false -%}
+          {%- set mytime_list = states.cover.sahas_garage_door.attributes['time in state']|list -%}
+          {%- set mytime_char = mytime_list|last -%}
+          {%- set mytime_count = mytime_list|length -%}
+          {%- set mynew_time = mytime_list[0:-1]|join|int -%}
+          {%- if mytime_char == "s" -%}
+            {%- if mynew_time > 120 -%}
+              {%- set morethan2min = true -%}
+            {%- else -%}
+              {%- set morethan2min = false -%}
+            {%- endif -%}
+          {%- elif mytime_char == "m" -%}
+            {%- if mynew_time > 2 -%}
+              {%- set morethan2min = true -%}
+            {%- else -%}
+              {%- set morethan2min = false -%}
+            {%- endif -%}
+          {%- elif mytime_char == "h" -%}
+            {%- set morethan2min = true -%}
+          {%- elif mytime_char == "d" -%}
+            {%- set morethan2min = true -%}
+          {%- endif -%}
+          {{morethan2min}}
+  action:
+    - service: script.garage_opened_more_than_two_mins
+      data:
+        get_morethan2min: morethan2min
+        get_time_id: mytime_char
+        get_mynew_time: mynew_time

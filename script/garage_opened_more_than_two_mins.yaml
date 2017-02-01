@@ -1,0 +1,31 @@
+  garage_opened_more_than_two_mins:
+    sequence:
+    - service: logbook.log
+      data:
+        name: "Garage Door opened for more than 2 mins"
+        message: "Garage Door opened for more than 2 mins"
+#        message: "Garage door is {{ states.cover.sahas_garage_door.state }} since {{ states.cover.sahas_garage_door.attributes['time in state'].split('m')[0] }} minutes."
+# Only set the outside lights to full if it's past sunset.
+    #  You could turn on some lights like the bedroom lights at night..
+    # - service: light.turn_on
+    #   entity_id: light.garagedoor_lights
+
+    - service: script.ifttt_notify
+      data_template:
+        value1: "TestHomeAssistant_Trigger"
+        value2: "Garage door is {{ states.cover.sahas_garage_door.state }}"
+        value3: >-
+          {%- set mytime_list = states.cover.sahas_garage_door.attributes['time in state']|list -%}
+          {%- set mytime_id = mytime_list|last -%}
+          {%- set mytime_count = mytime_list|length -%}
+          {%- set mynew_time = mytime_list[0:-1]|join|int -%}
+          Since {{ mynew_time }}
+          {%- if mytime_id == "s" -%}
+            seconds.
+          {%- elif mytime_id == "m" -%}
+            minutes.
+          {%- elif mytime_id == "h" -%}
+            hours.
+          {% else -%}
+            days.
+          {% endif %}

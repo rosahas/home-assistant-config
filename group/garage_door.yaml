@@ -1,0 +1,8 @@
+  garage_door:
+    name: Garage door
+    entities:
+      - cover.garage_door
+      - sensor.garage_door_status
+      - sensor.garage_door_time_in_state
+      - sensor.garage_door_wifi_signal_strength
+      - sensor.garage_door_laser_rate_state

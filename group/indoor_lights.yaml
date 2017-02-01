@@ -1,0 +1,7 @@
+  indoor_lights:
+    name: Indoor lights to turn on at night when garage opens
+    entities:
+      - light.hallway_lights
+      - light.living_room_light
+      - light.stairways_light
+      - light.upstairs_lights

@@ -1,0 +1,11 @@
+# Turn off outdoor lights in the monrning
+  alias: 'Turn off lights after sun rise'
+#  initial_state: True
+  hide_entity: False
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "+00:05:00"
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.daily_night_auto_lights
