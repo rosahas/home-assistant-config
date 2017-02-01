@@ -55,6 +55,7 @@ logbook:
     entities:
       - sensor.garage_door_time_in_state
       - sensor.garage_door_wifi_signal_strength
+      - sensor.garage_door_laser_rate_state
 
 # Track the sun
 sun:
@@ -80,15 +81,30 @@ cover:
       access_token: !secret garadget_access_token
       name:  Sahas Garage Door
 
-group:
-  garage_door:
-    name: Garage door
-    entities:
-      - cover.garage_door
-      - sensor.garage_door_status
-      - sensor.garage_door_time_in_state
-      - sensor.garage_door_wifi_signal_strength
-      - sensor.garage_door_laser_rate_state
+group: !include_dir_merge_named group/
+  # garage_door:
+  #   name: Garage door
+  #   entities:
+  #     - cover.garage_door
+  #     - sensor.garage_door_status
+  #     - sensor.garage_door_time_in_state
+  #     - sensor.garage_door_wifi_signal_strength
+  #     - sensor.garage_door_laser_rate_state
+  #
+  # daily_night_auto_lights:
+  #   name: Daily Night Automatic lights
+  #   entities:
+  #     - light.garagedoor_lights
+  #     - light.frontdoor_lights
+  #     - light.stairways_light
+  #
+  # indoor_lights:
+  #   name: Indoor lights to turn on at night when garage opens
+  #   entities:
+  #     - light.hallway_lights
+  #     - light.living_room_light
+  #     - light.stairways_light
+  #     - light.upstairs_lights
 
 
 # Text to speech

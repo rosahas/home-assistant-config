@@ -2,3 +2,5 @@
       icon: mdi:timer-sand
     sensor.garage_door_wifi_signal_strength:
       icon: mdi:wifi
+    cover.sahas_garage_door:
+      homebridge_cover_type: garage_door
