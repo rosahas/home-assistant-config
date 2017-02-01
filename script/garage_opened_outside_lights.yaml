@@ -12,12 +12,10 @@
 
     - service: light.turn_on
       entity_id: light.garagedoor_lights
-    # - service: script.ifttt_notify
-    #   data_template:
-    #     value1: "TestHomeAssistant_Trigger"
-    #     value2: "Garage door is {{ states.cover.sahas_garage_door.state }}"
-    #     value3: "Since {{ states.cover.sahas_garage_door.attributes['time in state'].split('m')[0] }} minutes"
-#    - service: script.garage_openned_outsideLights
+# Once the garagedoor_lights, outside lights, are on after dark, let's see if
+# anyone is home, if not, turn on the lights inside.
+    - service: script.garage_opened_and_itsnight_turnon_inside_lights
+
     - delay:
         minutes: 5
     - service: scene.turn_on
