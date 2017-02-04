@@ -1,0 +1,15 @@
+  platform: template
+  sensors:
+    garage_door_status:
+      friendly_name: 'State of Sahas Garage door'
+      value_template: '{{ states.cover.sahas_garage_door.state }}'
+    garage_door_time_in_state:
+      friendly_name: 'Since'
+      value_template: '{{ states.cover.sahas_garage_door.attributes["time in state"] }}'
+    garage_door_wifi_signal_strength:
+      friendly_name: 'WiFi strength'
+      value_template: '{{ states.cover.sahas_garage_door.attributes["wifi signal strength (dB)"] }}'
+      unit_of_measurement: 'dB'
+    garage_door_laser_rate_state:
+      friendly_name: 'Laser rate'
+      value_template: '{{ states.cover.sahas_garage_door.attributes["sensor reflection rate"] }}'
