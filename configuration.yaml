@@ -34,6 +34,11 @@ media_player:
     # sources:
       # Game: 'AppleTVLivingRoom'
 
+#media_player 2:
+  - platform: apple_tv
+    name: Living Room Apple TV
+    host: 192.168.1.64
+    login_id: !secret apple_tv_living_room_login_id
 
 http:
   # Uncomment this to add a password (recommended!)
