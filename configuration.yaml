@@ -18,13 +18,22 @@ introduction:
 
 # logging
 logger:
-  default:  error
+  default: debug
 #  logs:
-#    homeassistant.components.cover.garadget: debug
+#    homeassistant.components.media_player: debug
 #    homeassistant.components: debug
 
 # Enables the frontend
 frontend:
+
+# Enable onkyo receiver
+media_player:
+  - platform: onkyo
+    host: 192.168.1.62
+    name: living_room_receiver
+    # sources:
+      # Game: 'AppleTVLivingRoom'
+
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -33,7 +42,7 @@ http:
   ip_ban_enabled: True
   login_attempts_threshold: 5
   # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+  base_url: !secret http_base_url
   ssl_certificate:  !secret http_ssl_certificate
   ssl_key:  !secret http_ssl_key
 

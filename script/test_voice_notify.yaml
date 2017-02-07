@@ -1,0 +1,10 @@
+test_voice_notify:
+  sequence:
+    - service: logbook.log
+      data:
+        name: "Test voice notify"
+        message: "Testing the voice notify script"
+
+    - service: script.voice_notify
+      data:
+        value1: 'Please check the Front Door.  Someone Pressed the Doorbell.'
