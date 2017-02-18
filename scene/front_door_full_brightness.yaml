@@ -2,3 +2,4 @@
     entities:
       light.frontdoor_lights:
         state: on
+        brightness: 255

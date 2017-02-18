@@ -1,0 +1,6 @@
+# garage door lights full on
+  - name: garage_door_full_brightness
+    entities:
+      light.garagedoor_lights:
+        state: on
+        brightness: 255

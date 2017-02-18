@@ -12,32 +12,32 @@
         state: 'open'
       - condition: template
         value_template: >-
-          {%- set morethan2min = false -%}
+          {%- set morethan12min = false -%}
           {%- set mytime_list = states.cover.sahas_garage_door.attributes['time in state']|list -%}
           {%- set mytime_char = mytime_list|last -%}
           {%- set mytime_count = mytime_list|length -%}
           {%- set mynew_time = mytime_list[0:-1]|join|int -%}
           {%- if mytime_char == "s" -%}
             {%- if mynew_time > 720 -%}
-              {%- set morethan2min = true -%}
+              {%- set morethan12min = true -%}
             {%- else -%}
-              {%- set morethan2min = false -%}
+              {%- set morethan12min = false -%}
             {%- endif -%}
           {%- elif mytime_char == "m" -%}
             {%- if mynew_time > 12 -%}
-              {%- set morethan2min = true -%}
+              {%- set morethan12min = true -%}
             {%- else -%}
-              {%- set morethan2min = false -%}
+              {%- set morethan12min = false -%}
             {%- endif -%}
           {%- elif mytime_char == "h" -%}
-            {%- set morethan2min = true -%}
+            {%- set morethan12min = true -%}
           {%- elif mytime_char == "d" -%}
-            {%- set morethan2min = true -%}
+            {%- set morethan12min = true -%}
           {%- endif -%}
-          {{morethan2min}}
+          {{morethan12min}}
   action:
-    - service: script.garage_opened_more_than_two_mins
+    - service: script.garage_opened_more_than_twelve_mins_for_text_alert
       data:
-        get_morethan2min: morethan2min
+        get_morethan2min: morethan12min
         get_time_id: mytime_char
         get_mynew_time: mynew_time

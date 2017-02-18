@@ -38,7 +38,14 @@ media_player:
   - platform: apple_tv
     name: Living Room Apple TV
     host: 192.168.1.64
-    login_id: !secret apple_tv_living_room_login_id
+    login_id: !secret apple_tv_login_id
+# Game room apple tv
+  - platform: apple_tv
+    name: Game Room Apple TV
+    host: 192.168.1.63
+    login_id: !secret apple_tv_login_id
+# Living Room Chromecast
+  - platform: cast
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -70,6 +77,15 @@ logbook:
       - sensor.garage_door_time_in_state
       - sensor.garage_door_wifi_signal_strength
       - sensor.garage_door_laser_rate_state
+
+light:
+# Lights .. for LED Strip lights
+  - platform: flux_led
+    automatic_add: True
+    devices:
+      192.168.1.51:
+        name: living_room_led_strip
+        mode: rgbw
 
 # Track the sun
 sun:
