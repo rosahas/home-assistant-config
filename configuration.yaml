@@ -20,7 +20,7 @@ introduction:
 logger:
   default: debug
 #  logs:
-#    homeassistant.components.media_player: debug
+#    homeassistant.components.media_player.game_room_apple_tv: critical
 #    homeassistant.components: debug
 
 # Enables the frontend
@@ -34,18 +34,23 @@ media_player:
     # sources:
       # Game: 'AppleTVLivingRoom'
 
-#media_player 2:
+#Living Room Apple TV:
   - platform: apple_tv
     name: Living Room Apple TV
     host: 192.168.1.64
     login_id: !secret apple_tv_login_id
-# Game room apple tv
-  - platform: apple_tv
-    name: Game Room Apple TV
-    host: 192.168.1.63
-    login_id: !secret apple_tv_login_id
+# # Game room Apple TV
+  # - platform: apple_tv
+  #   name: Game Room Apple TV
+  #   host: 192.168.1.63
+  #   login_id: !secret apple_tv_login_id
+
 # Living Room Chromecast
   - platform: cast
+# Samsung TV - UN55C8000
+  - platform: samsungtv
+    host: 192.168.1.52
+
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -63,12 +68,18 @@ updater:
 
 # Discover some devices automatically
 discovery:
+  ignore:
+    - apple_tv
+    - samsung_tv
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
 # Enables support for tracking state changes over time.
 history:
+  exclude:
+    entities:
+      - cover.sahas_garage_door
 
 # View all events in a logbook
 logbook:
@@ -94,6 +105,9 @@ sensor: !include_dir_list sensor/
 
 ifttt:
   key: !secret ifttt_key
+
+ifttt2:
+  key: !secret ifttt2_key
 
 automation: !include_dir_list automation/
 
@@ -136,9 +150,9 @@ group: !include_dir_merge_named group/
   #     - light.stairways_light
   #     - light.upstairs_lights
 
-# Delete logs older than 7 days.
+# Delete logs older than 3 days.
 recorder:
-  purge_days: 7
+  purge_days: 3
 
 # Text to speech
 tts:

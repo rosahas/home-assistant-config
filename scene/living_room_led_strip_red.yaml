@@ -1,0 +1,8 @@
+# garage door lights night
+# this generic AliExpress strip has green/red swapped!
+  - name: living_room_led_strip_red
+    entities:
+      light.living_room_led_strip:
+        state: on
+        brightness: 150
+        color_name: 'Green'

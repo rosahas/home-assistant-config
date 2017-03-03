@@ -29,3 +29,23 @@
           {% else -%}
             days.
           {% endif %}
+
+    - service: script.ifttt2_notify_text
+      data_template:
+        value1: "HomeHassistant_TriggerText"
+        value2: "Garage door is {{ states.cover.sahas_garage_door.state }}"
+        value3: >-
+          {%- set mytime_list = states.cover.sahas_garage_door.attributes['time in state']|list -%}
+          {%- set mytime_id = mytime_list|last -%}
+          {%- set mytime_count = mytime_list|length -%}
+          {%- set mynew_time = mytime_list[0:-1]|join|int -%}
+          Since {{ mynew_time }}
+          {%- if mytime_id == "s" -%}
+            seconds.
+          {%- elif mytime_id == "m" -%}
+            minutes.
+          {%- elif mytime_id == "h" -%}
+            hours.
+          {% else -%}
+            days.
+          {% endif %}
