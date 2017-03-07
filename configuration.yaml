@@ -35,10 +35,10 @@ media_player:
       # Game: 'AppleTVLivingRoom'
 
 #Living Room Apple TV:
-  - platform: apple_tv
-    name: Living Room Apple TV
-    host: 192.168.1.64
-    login_id: !secret apple_tv_login_id
+  # - platform: apple_tv
+  #   name: Living Room Apple TV
+  #   host: 192.168.1.64
+  #   login_id: !secret apple_tv_login_id
 # # Game room Apple TV
   # - platform: apple_tv
   #   name: Game Room Apple TV
@@ -47,6 +47,9 @@ media_player:
 
 # Living Room Chromecast
   - platform: cast
+    # host:  192.168.1.50
+    # name:  living_roomCC
+
 # Samsung TV - UN55C8000
   - platform: samsungtv
     host: 192.168.1.52
@@ -92,11 +95,16 @@ logbook:
 light:
 # Lights .. for LED Strip lights
   - platform: flux_led
-    automatic_add: True
+    automatic_add: False
     devices:
       192.168.1.51:
         name: living_room_led_strip
         mode: rgbw
+      192.168.1.53:
+        name: kitchen_sink_magic_light
+      192.168.1.54:
+        name: master_bathroom_magic_light
+
 
 # Track the sun
 sun:
