@@ -1,0 +1,11 @@
+#Automation test LED strip every 2 minutes.
+  alias: led_strip_test_every_2mins
+  trigger:
+    - platform: time
+      minutes: '/2'
+      seconds: 00
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.living_room_led_strip
+      effect: random

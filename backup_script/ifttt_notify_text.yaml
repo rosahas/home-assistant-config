@@ -1,0 +1,5 @@
+# Script to Notify via IFTTT .. data is passed in.
+  ifttt_notify_text:
+    sequence:
+      - service: ifttt.trigger
+        data_template: {"event":"HomeHassistant_TriggerText", "value1":"{{ value1 }}", "value2":"{{ value2 }}", "value3":"{{ value3 }}"}

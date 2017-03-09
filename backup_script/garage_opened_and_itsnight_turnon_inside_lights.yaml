@@ -1,0 +1,36 @@
+  garage_opened_and_itsnight_turnon_inside_lights:
+    sequence:
+    - service: logbook.log
+      data:
+        name: "Garage Door opened, check if it's night and turn on inside lights"
+        message: "Garage Door opened, check if it's night and turn on inside lights"
+
+    #
+    # - condition: state
+    #   entity_id: light.living_room_light
+    #   state: 'off'
+
+    - condition:
+        condition: and
+        conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: below_horizon
+        - condition: state
+          entity_id: light.living_room_light
+          state: 'off'
+
+#
+# If true, then turn on indoor lights, which is living_room_light, hallway_lights, upstairs_lights.
+#
+
+    - service: homeassistant.turn_on
+      entity_id: group.indoor_lights
+
+# wait 5 mins
+    - delay:
+        minutes: 5
+
+# then turn off the upstairs_lights.   let us decide on living_room_light and hallway_lights
+    - service: light.turn_off
+      entity_id: light.upstairs_lights
