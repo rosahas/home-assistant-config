@@ -1,0 +1,17 @@
+#Automation to check if the garage is open more than 12 mins, then send a text.
+  alias: masterbath_magic_light_on
+  trigger:
+    - platform: state
+      entity_id: light.master_bathroom_magic_light
+      state: 'on'
+      for: '00:00:20'
+
+# Don't turn off the lights if they are on because of the notification!
+  condition:
+    - condition: state
+      entity_id: input_boolean.light_notify
+      state: 'off'
+
+  action:
+    - service: light.turn_off
+      entity_id: light.master_bathroom_magic_light

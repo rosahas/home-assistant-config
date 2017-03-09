@@ -1,0 +1,86 @@
+    input_boolean.guest_mode:
+        emulated_hue: true
+        friendly_name: "Guest Mode"
+
+    input_boolean.light_notify:
+        emulated_hue: false
+
+    light.breakfast_lights:
+        emulated_hue: false
+
+    light.frontdoor_lights:
+        emulated_hue: false
+
+    light.garagedoor_lights:
+        emulated_hue: false
+
+    light.hallway_lights:
+        emulated_hue: false
+
+    light.kitchen_sink_magic_light:
+        emulated_hue: true
+        friendly_name: "Kitchen Sink Light"
+
+    light.l_room_bfast:
+        emulated_hue: false
+
+    light.l_room_hallway:
+        emulated_hue: false
+
+    light.l_room_master_bed_room:
+        emulated_hue: false
+
+    light.l_room_motion_detector:
+        emulated_hue: false
+
+    light.lightstrip:
+        emulated_hue: false
+
+    light.living_room_led_strip:
+        emulated_hue: true
+        friendly_name: "Magic LED Strip"
+
+    light.living_room_light:
+        emulated_hue: false
+
+    light.master_bathroom_magic_light:
+        emulated_hue: true
+        friendly_name: "Master Bathroom Magic Light"
+
+    light.master_bedroom_lights:
+        emulated_hue: false
+
+    light.office_lights:
+        emulated_hue: false
+
+    light.stairways_light:
+        emulated_hue: false
+
+    light.upstairs_lights:
+        emulated_hue: false
+
+    media_player.living_room_receiver:
+        emulated_hue: true
+        friendly_name: "Receiver"
+
+    media_player.samsung_tv_remote:
+        emulated_hue: true
+        friendly_name: "TV"
+
+    switch.garage_light:
+        emulated_hue: false
+
+    switch.humidifier:
+        emulated_hue: false
+
+    switch.kidsbedroomlights:
+        emulated_hue: false
+
+    switch.office_power:
+        emulated_hue: false
+
+    switch.pc_outlet:
+        emulated_hue: false
+
+    switch.printer:
+        emulated_hue: false

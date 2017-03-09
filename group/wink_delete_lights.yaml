@@ -1,0 +1,18 @@
+  wink_delete_lights:
+    view: no
+    name: Wink Delete lights
+    entities:
+      - light.delete
+      - light.delete_1
+      - light.delete_2
+      - light.delete_3
+      - light.delete_4
+      - light.delete_5
+      - light.delete_6
+      - light.delete_7
+      - light.delete_8
+      - light.delete_9
+      - light.delete_10
+      - light.delete_11
+      - light.delete_12
+      - light.delete_13

@@ -1,0 +1,45 @@
+    group.wink_delete_lights:
+      hidden: true
+      emulated_hue: false
+    light.delete:
+      hidden: true
+      emulated_hue: false
+    light.delete_1:
+      hidden: true
+      emulated_hue: false
+    light.delete_2:
+      hidden: true
+      emulated_hue: false
+    light.delete_3:
+      hidden: true
+      emulated_hue: false
+    light.delete_4:
+      hidden: true
+      emulated_hue: false
+    light.delete_5:
+      hidden: true
+      emulated_hue: false
+    light.delete_6:
+      hidden: true
+      emulated_hue: false
+    light.delete_7:
+      hidden: true
+      emulated_hue: false
+    light.delete_8:
+      hidden: true
+      emulated_hue: false
+    light.delete_9:
+      hidden: true
+      emulated_hue: false
+    light.delete_10:
+      hidden: true
+      emulated_hue: false
+    light.delete_11:
+      hidden: true
+      emulated_hue: false
+    light.delete_12:
+      hidden: true
+      emulated_hue: false
+    light.delete_13:
+      hidden: true
+      emulated_hue: false

@@ -18,10 +18,10 @@ introduction:
 
 # logging
 logger:
-  default: debug
-#  logs:
-#    homeassistant.components.media_player.game_room_apple_tv: critical
-#    homeassistant.components: debug
+  default: warn
+  logs:
+   homeassistant.components.api: warning
+   homeassistant.components.cover.garadget: warning
 
 # Enables the frontend
 frontend:
@@ -106,6 +106,21 @@ light:
         name: master_bathroom_magic_light
 
 
+emulated_hue:
+  host_ip: 192.168.1.70
+  # listen_port: 8300
+  # advertise_ip: 10.0.0.10
+  # advertise_port: 8080
+  # off_maps_to_on_domains:
+  #   - script
+  #   - scene
+  expose_by_default: false
+  exposed_domains:
+    - input_boolean
+    - light
+    - media_player
+    - switch
+
 # Track the sun
 sun:
 
@@ -158,9 +173,11 @@ group: !include_dir_merge_named group/
   #     - light.stairways_light
   #     - light.upstairs_lights
 
+input_boolean: !include_dir_merge_named input_boolean
+
 # Delete logs older than 3 days.
 recorder:
-  purge_days: 3
+  purge_days: 2
 
 # Text to speech
 tts:
