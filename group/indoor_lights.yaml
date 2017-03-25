@@ -7,5 +7,4 @@
       - light.breakfast_lights
       - light.disco_lights
       - light.stairways_light
-      - light.upstairs_lights
       - light.living_room_led_strip
