@@ -38,7 +38,7 @@
 
     light.living_room_led_strip:
         emulated_hue: true
-        friendly_name: "Magic LED Strip"
+        friendly_name: "Dance Lights"
 
     light.living_room_light:
         emulated_hue: false
@@ -66,6 +66,10 @@
     media_player.samsung_tv_remote:
         emulated_hue: true
         friendly_name: "TV"
+
+    group.indoor_lights:
+        emulated_hue:  true
+        friendly_name:  "Indoor Lights"
 
     switch.garage_light:
         emulated_hue: false
